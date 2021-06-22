@@ -20,13 +20,9 @@ data ibm_is_ssh_key ssh_key {
 ##############################################################################
 
 # Get the id of the subnet name
-locals {
-  vsi_subnet_ids = [
-    for i in data.ibm_is_vpc.vpc.subnets: 
-        i.id if var.vsi_vpc_subnet_name == i.name
-  ]
+data "ibm_is_subnet" "subnet" {
+  name = var.vsi_vpc_subnet_name
 }
-
 
 # Image to be used (i.e. Ubuntu, redhat, etc)
 data ibm_is_image vsi_image {
@@ -44,6 +40,6 @@ resource ibm_is_instance vsi {
     zone           = var.vsi_vpc_zone
     primary_network_interface {
         name    = "eth0"
-        subnet  = "${local.vsi_subnet_ids}"
+        subnet  = data.ibm_is_subnet.subnet.id
     }   
 }
