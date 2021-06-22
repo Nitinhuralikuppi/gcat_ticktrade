@@ -19,7 +19,7 @@ data ibm_is_ssh_key ssh_key {
 # Provision VSI
 ##############################################################################
 
-# Get the id of the subnet name
+# Get subnet name to be used
 data "ibm_is_subnet" "subnet" {
   name = var.vsi_vpc_subnet_name
 }
