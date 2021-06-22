@@ -37,7 +37,7 @@ resource ibm_is_instance vsi {
     name           = var.vsi_name
     resource_group = data.ibm_resource_group.resource_group.id
     tags           = var.tags
-    image          = data.ibm_is_image.vsi1_image.id
+    image          = data.ibm_is_image.vsi_image.id
     profile        = var.vsi_machine_profile
     keys           = [data.ibm_is_ssh_key.ssh_key.id]
     vpc            = data.ibm_is_vpc.vpc.id
