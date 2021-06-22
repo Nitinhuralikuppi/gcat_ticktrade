@@ -23,7 +23,7 @@ variable ibm_region {
 variable tags {
     description = "Enter any tags that you want to associate with VSI and associated resources."
     type        = list(string)
-    default     = 
+    default     = [
       "env:dev"
     ]
 }
