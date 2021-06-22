@@ -44,6 +44,6 @@ resource ibm_is_instance vsi {
     zone           = var.vsi_vpc_zone
     primary_network_interface {
         name    = "eth0"
-        subnet  = "0717-0efce8fd-7926-4ff2-a83f-7f1a9e117173"
+        subnet  = "${local.vsi_subnet_ids}"
     }   
 }
